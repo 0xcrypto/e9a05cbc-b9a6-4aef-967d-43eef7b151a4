@@ -27,10 +27,13 @@ namespace Parking.Entry.Forms
         {
 
             FormBorderStyle = FormBorderStyle.None;
-
             WindowState = FormWindowState.Maximized;
-
             Size = new Size(1024, 768);
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

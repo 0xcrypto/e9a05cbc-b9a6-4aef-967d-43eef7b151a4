@@ -102,9 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\ParkingImage.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Images\QRCodes\" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +121,10 @@
       <Project>{CBAD1054-CE00-4732-ABD0-D8478619A1E0}</Project>
       <Name>Parking.PortCommunicate</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\parking.jpg" />
+    <None Include="Resources\parking.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
