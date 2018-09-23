@@ -1,0 +1,17 @@
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.csprojAssemblyReference.cache
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb

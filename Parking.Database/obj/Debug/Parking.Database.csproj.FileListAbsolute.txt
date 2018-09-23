@@ -1,0 +1,45 @@
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Database.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Database.pdb
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Common.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Interfaces.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Microsoft.PointOfService.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\QRCoder.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\UnityEngine.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Common.pdb
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Interfaces.pdb
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Microsoft.PointOfService.xml
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csprojAssemblyReference.cache
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csproj.CoreCompileInputs.cache
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.dll
+C:\Users\Mohit\Desktop\Parking Software\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Database.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Common.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Microsoft.PointOfService.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\QRCoder.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\UnityEngine.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\bin\Debug\Microsoft.PointOfService.xml
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.dll
+D:\Projects\ParkingSoftware-TDClient\4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A\Parking.Database\obj\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Database.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Common.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Microsoft.PointOfService.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\QRCoder.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\UnityEngine.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\bin\Debug\Microsoft.PointOfService.xml
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\obj\Debug\Parking.Database.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\obj\Debug\Parking.Database.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\obj\Debug\Parking.Database.dll
+D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Database\obj\Debug\Parking.Database.pdb
