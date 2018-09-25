@@ -9,7 +9,7 @@ namespace Parking.PortCommunicate
         private SerialPort sPort;
         private Action<string> vehicleEntryCallback;
 
-        public void Connect(string portName, int baudRate, Parity parity, int databits, StopBits stopBits)
+        public bool Connect(string portName, int baudRate, Parity parity, int databits, StopBits stopBits)
         {
             sPort = new SerialPort(portName, baudRate, parity, databits, stopBits);
             try
@@ -17,10 +17,12 @@ namespace Parking.PortCommunicate
                 sPort.Open();
                 sPort.DataReceived += SubscribePortDataReceived;
                 Console.WriteLine("Connected Port");
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString(), "Error");
+                return false;
             }
 
         }

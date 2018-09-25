@@ -25,3 +25,12 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parki
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CopyComplete
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.dll
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CopyComplete
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.pdb

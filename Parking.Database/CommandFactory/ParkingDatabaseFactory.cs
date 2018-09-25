@@ -16,27 +16,49 @@ namespace Parking.Database.CommandFactory
         public ParkingDatabaseFactory()
         {
             sqlDataAccess = new SqlDataAccess();
-            queries.Add("SelectMasterSettings", @"SELECT  
-                                                        [CompanyName],
-                                                        [ParkingPlaceCode],
-                                                        [ParkingPlaceName],
-                                                        [TwoWheelerParkingRatePerHour],
-                                                        [FourWheelerParkingRatePerHour],
-                                                        [LostTicketPenality],
-                                                        [PLCBoardPortNumber]
+            queries.Add("SelectMasterSettings", @"SELECT  [CompanyName],
+                                                          [ParkingPlaceCode],
+                                                          [ParkingPlaceName],
+                                                          [TwoWheelerParkingRatePerHour],
+                                                          [FourWheelerParkingRatePerHour],
+                                                          [LostTicketPenality],
+                                                          [TDClientPLCBoardPortNumber], 
+                                                          [TDServerIPAddress], 
+                                                          [TDServerPortNumber], 
+                                                          [TDClientDeviceId], 
+                                                          [TDClientUserId], 
+                                                          [TDClientPassword], 
+                                                          [TDClientLongLat], 
+                                                          [TDClientDriverCameraIPAddress], 
+                                                          [TDClientDriverCameraUserId], 
+                                                          [TDClientDriverCameraPassword], 
+                                                          [TDClientVehicleCameraIPAddress], 
+                                                          [TDClientVehicleCameraUserId], 
+                                                          [TDClientVehicleCameraPassword]
                                                 FROM [tbl_master] 
                                                 WHERE [Id] = '{0}'");
 
             queries.Add("UpdateMasterSettings", @"  UPDATE [tbl_master]
-                                                    SET 
-                                                        [CompanyName] = '{0}',
-                                                        [ParkingPlaceCode] = '{1}',
-                                                        [ParkingPlaceName] = '{2}',
-                                                        [TwoWheelerParkingRatePerHour] = '{3}',
-                                                        [FourWheelerParkingRatePerHour] = '{4}',
-                                                        [LostTicketPenality] = '{5}',
-                                                        [PLCBoardPortNumber] = '{6}' 
-                                                    WHERE [Id] = '{7}'");
+                                                    SET [CompanyName] = '{0}', 
+                                                        [ParkingPlaceCode] = '{1}', 
+                                                        [ParkingPlaceName] = '{2}', 
+                                                        [TwoWheelerParkingRatePerHour] = '{3}', 
+                                                        [FourWheelerParkingRatePerHour] = '{4}', 
+                                                        [LostTicketPenality] = '{5}', 
+                                                        [TDClientPLCBoardPortNumber] = '{6}', 
+                                                        [TDServerIPAddress] = '{7}', 
+                                                        [TDServerPortNumber] = '{8}', 
+                                                        [TDClientDeviceId] = '{9}', 
+                                                        [TDClientUserId] = '{10}', 
+                                                        [TDClientPassword] = '{11}', 
+                                                        [TDClientLongLat] = '{12}',  
+                                                        [TDClientDriverCameraIPAddress] = '{13}',  
+                                                        [TDClientDriverCameraUserId] = '{14}',  
+                                                        [TDClientDriverCameraPassword] = '{15}',  
+                                                        [TDClientVehicleCameraIPAddress] = '{16}',  
+                                                        [TDClientVehicleCameraUserId] = '{17}', 
+                                                        [TDClientVehicleCameraPassword] = '{18}' 
+                                                    WHERE [Id] = '{19}'");
 
             queries.Add("InsertVehicleEntry", @"INSERT INTO [tbl_parking]
                                                             ([TicketNumber],
@@ -56,10 +78,25 @@ namespace Parking.Database.CommandFactory
             string twoWheelerParkingRatePerHour,
             string fourWheelerParkingRatePerHour,
             string lostTicketPenality,
-            string plcBoardPortNumber)
+            string TDClientPLCBoardPortNumber,
+            string TDServerIPAddress,
+            string TDServerPortNumber,
+            string TDClientDeviceId,
+            string TDClientUserId,
+            string TDClientPassword,
+            string TDClientLongLat,
+            string TDClientDriverCameraIPAddress,
+            string TDClientDriverCameraUserId,
+            string TDClientDriverCameraPassword,
+            string TDClientVehicleCameraIPAddress,
+            string TDClientVehicleCameraUserId,
+            string TDClientVehicleCameraPassword)
         {
             var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
-                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, plcBoardPortNumber,
+                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, TDClientPLCBoardPortNumber,
+                                      TDServerIPAddress, TDServerPortNumber, TDClientDeviceId, TDClientUserId, TDClientPassword,
+                                      TDClientLongLat, TDClientDriverCameraIPAddress, TDClientDriverCameraUserId, TDClientDriverCameraPassword,
+                                      TDClientVehicleCameraIPAddress, TDClientVehicleCameraUserId, TDClientVehicleCameraPassword, 
                                       MasterId);
             sqlDataAccess.ExecuteNonQuery(query);
         }

@@ -4,6 +4,6 @@ namespace Parking.Interfaces
 {
     public interface ISerialPortCommunicate
     {
-        void Connect(string portName, int baudRate, Parity parity, int databits, StopBits stopBits);
+        bool Connect(string portName, int baudRate, Parity parity, int databits, StopBits stopBits);
     }
 }
