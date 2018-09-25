@@ -39,3 +39,17 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Common\obj\Debug\Parking.C
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Common\obj\Debug\Parking.Common.csproj.CopyComplete
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Common\obj\Debug\Parking.Common.dll
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Common\obj\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Parking.Common.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Microsoft.PointOfService.ControlBase.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Microsoft.PointOfService.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\QRCoder.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\System.Drawing.Common.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\UnityEngine.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Microsoft.PointOfService.xml
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\Microsoft.PointOfService.ControlBase.xml
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.csproj.CopyComplete
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.csprojAssemblyReference.cache

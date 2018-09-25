@@ -84,8 +84,6 @@ D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.PortCommunicate.dll
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\System.Drawing.Common.dll
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Microsoft.PointOfService.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\QRCoder.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\UnityEngine.dll
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Common.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Database.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.pdb

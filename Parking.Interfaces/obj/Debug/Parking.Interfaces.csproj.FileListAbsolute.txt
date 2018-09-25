@@ -17,7 +17,6 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parki
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csprojAssemblyReference.cache
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb

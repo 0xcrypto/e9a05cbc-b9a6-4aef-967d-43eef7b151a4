@@ -26,6 +26,6 @@ namespace Parking.Interfaces
 
         DataRow GetMasterSettings();
 
-        void SaveVehicleEntry(string vehicleNumber);
+        void SaveVehicleEntry(string vehicleNumber, int vehicleType);
     }
 }

@@ -121,19 +121,16 @@ namespace Parking.Database.CommandFactory
 
         }
 
-        public void SaveVehicleEntry(string vehicleNumber)
+        public void SaveVehicleEntry(string vehicleNumber, int vehicleType)
         {
             var ticketNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
-            var entryTime = DateTime.Now;
-            // ToDo: Add uniqueness on validation number
             var validationNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
-            var qrCode = QrCode.GenerateQrCode(vehicleNumber, validationNumber);
-            const string vehicleType = "Car";
+            var entryTime = DateTime.Now.ToString();
+            var code = QRCode.Generate(vehicleNumber, validationNumber, vehicleType, entryTime);
 
             try
             {
-                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, qrCode, vehicleNumber,
-                                                vehicleType, entryTime);
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, code, vehicleNumber, vehicleType, entryTime);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
             }
             catch (Exception exception)

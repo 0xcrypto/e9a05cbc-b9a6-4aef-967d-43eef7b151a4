@@ -17,7 +17,9 @@ namespace Parking.Entry.Forms
 
         private void OkButtonClick(object sender, EventArgs e)
         {
-            parkingDatabaseFactory.SaveVehicleEntry(txtVehicleNumber.Text);
+            var type = 2; // 2 or 4
+            var number = txtVehicleNumber.Text.ToString().Trim();
+            parkingDatabaseFactory.SaveVehicleEntry(number, type);
 
             //var printer = new Printer();
             //printer.PrintTicket(txtVehicleNumber.Text);

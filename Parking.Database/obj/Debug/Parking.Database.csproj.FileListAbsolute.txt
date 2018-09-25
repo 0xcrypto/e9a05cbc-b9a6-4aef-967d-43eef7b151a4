@@ -48,8 +48,6 @@ D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Database
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Common.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Microsoft.PointOfService.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\QRCoder.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\UnityEngine.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Common.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Interfaces.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Microsoft.PointOfService.xml

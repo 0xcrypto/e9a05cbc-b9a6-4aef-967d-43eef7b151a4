@@ -4,21 +4,11 @@ using QRCoder;
 
 namespace Parking.Common
 {
-    public static class QrCode
+    public static class QRCode
     {
-        public static string GenerateQrCode(string vehicleNumber, string validationNumber)
+        public static string Generate(string validationNumber, string vehicleNumber, int vehicleType, string entryTime)
         {
-            var newGuid = new Guid();
-            var splitGuid = newGuid.ToString().Split('-');
-
-            var qrGenerator = new QRCodeGenerator();
-            var qrCodeData = qrGenerator.CreateQrCode(validationNumber, QRCodeGenerator.ECCLevel.Q);
-            //var qrCode = new QrCode(qrCodeData);
-            //var qrCodeImage = qrCode.GetGraphic(20);
-
-            //qrCode.drawBarcode("C:\\qrcode.gif");
-            var myQRcode = "M" + validationNumber + splitGuid.FirstOrDefault() + vehicleNumber + "A5";
-            return myQRcode;
+            return Security.Encrypt(validationNumber + "_" + vehicleNumber + "_" + vehicleType + "_" + entryTime);
         }
     }
 }
