@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Parking.Common;
+using Parking.CameraCommunicate;
+using System.Drawing;
+using System.IO;
 
 namespace Parking.Database.CommandFactory
 {
@@ -66,8 +69,10 @@ namespace Parking.Database.CommandFactory
                                                              [QRCode],
                                                              [VehicleNumber],
                                                              [VehicleType],
-                                                             [EntryTime]) 
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}')");
+                                                             [EntryTime],
+                                                             [DriverImage],
+                                                             [VehicleImage]) 
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}', '{6}', '{7}')");
 
         }
 
@@ -127,10 +132,12 @@ namespace Parking.Database.CommandFactory
             var validationNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
             var entryTime = DateTime.Now.ToString();
             var code = QRCode.Generate(vehicleNumber, validationNumber, vehicleType, entryTime);
+            var driverImage = (Image)ParkingCamera.GetDriverImage();
+            var vehicleImage = (Image)ParkingCamera.GetVehicleImage();
 
             try
             {
-                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, code, vehicleNumber, vehicleType, entryTime);
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, code, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
             }
             catch (Exception exception)

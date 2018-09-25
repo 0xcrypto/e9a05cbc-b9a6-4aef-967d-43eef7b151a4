@@ -1,0 +1,4 @@
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communication\obj\Debug\netcoreapp2.1\Parking.Camera.Communication.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communication\obj\Debug\netcoreapp2.1\Parking.Camera.Communication.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communication\obj\Debug\netcoreapp2.1\Parking.Camera.Communication.AssemblyInfoInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communication\obj\Debug\netcoreapp2.1\Parking.Camera.Communication.AssemblyInfo.cs

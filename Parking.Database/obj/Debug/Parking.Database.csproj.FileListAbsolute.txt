@@ -56,3 +56,5 @@ D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Camera.Communicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Camera.Communicate.pdb

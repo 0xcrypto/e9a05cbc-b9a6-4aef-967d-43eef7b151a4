@@ -1,0 +1,6 @@
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\bin\Debug\Parking.Camera.Communicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\bin\Debug\Parking.Camera.Communicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\obj\Debug\Parking.CameraCommunicate.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\obj\Debug\Parking.Camera.Communicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\obj\Debug\Parking.Camera.Communicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Camera.Communicate\obj\Debug\Parking.CameraCommunicate.csprojAssemblyReference.cache
