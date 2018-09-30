@@ -29,9 +29,16 @@ namespace Parking.Entry.Forms
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             Size = new Size(1024, 768);
+
+            //C:\Projects\ConsoleApplication1\bin\Debug
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

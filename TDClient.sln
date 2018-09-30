@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.Interfaces", "Parki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.Common", "Parking.Common\Parking.Common.csproj", "{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parking.CameraCommunicate", "Parking.Camera.Communicate\Parking.CameraCommunicate.csproj", "{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,22 +105,6 @@ Global
 		{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}.Release|x64.Build.0 = Release|Any CPU
 		{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}.Release|x86.ActiveCfg = Release|Any CPU
 		{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}.Release|x86.Build.0 = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|ARM.Build.0 = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|x64.Build.0 = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Debug|x86.Build.0 = Debug|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|ARM.ActiveCfg = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|ARM.Build.0 = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|x64.ActiveCfg = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|x64.Build.0 = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|x86.ActiveCfg = Release|Any CPU
-		{CA6AA9A7-4915-4BBA-9C68-D24058C5E681}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

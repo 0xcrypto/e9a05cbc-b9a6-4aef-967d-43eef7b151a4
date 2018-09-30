@@ -3,18 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Parking.Common;
-using Parking.CameraCommunicate;
 using System.Drawing;
 using System.IO;
+using Parking.Common.Model;
 
 namespace Parking.Database.CommandFactory
 {
-    public class ParkingDatabaseFactory: IParkingDatabaseFactory
+    public class ParkingDatabaseFactory : IParkingDatabaseFactory
     {
         private readonly ISqlDataAccess sqlDataAccess;
         private readonly Dictionary<string, string> queries = new Dictionary<string, string>();
         private const string MasterId = "4D587294-4DC1-421A-8FB5-D5DE9FB0ED4A";
-        private const int TicketNumberLength = 10;
 
         public ParkingDatabaseFactory()
         {
@@ -24,20 +23,7 @@ namespace Parking.Database.CommandFactory
                                                           [ParkingPlaceName],
                                                           [TwoWheelerParkingRatePerHour],
                                                           [FourWheelerParkingRatePerHour],
-                                                          [LostTicketPenality],
-                                                          [TDClientPLCBoardPortNumber], 
-                                                          [TDServerIPAddress], 
-                                                          [TDServerPortNumber], 
-                                                          [TDClientDeviceId], 
-                                                          [TDClientUserId], 
-                                                          [TDClientPassword], 
-                                                          [TDClientLongLat], 
-                                                          [TDClientDriverCameraIPAddress], 
-                                                          [TDClientDriverCameraUserId], 
-                                                          [TDClientDriverCameraPassword], 
-                                                          [TDClientVehicleCameraIPAddress], 
-                                                          [TDClientVehicleCameraUserId], 
-                                                          [TDClientVehicleCameraPassword]
+                                                          [LostTicketPenality]
                                                 FROM [tbl_master] 
                                                 WHERE [Id] = '{0}'");
 
@@ -48,23 +34,11 @@ namespace Parking.Database.CommandFactory
                                                         [TwoWheelerParkingRatePerHour] = '{3}', 
                                                         [FourWheelerParkingRatePerHour] = '{4}', 
                                                         [LostTicketPenality] = '{5}', 
-                                                        [TDClientPLCBoardPortNumber] = '{6}', 
-                                                        [TDServerIPAddress] = '{7}', 
-                                                        [TDServerPortNumber] = '{8}', 
-                                                        [TDClientDeviceId] = '{9}', 
-                                                        [TDClientUserId] = '{10}', 
-                                                        [TDClientPassword] = '{11}', 
-                                                        [TDClientLongLat] = '{12}',  
-                                                        [TDClientDriverCameraIPAddress] = '{13}',  
-                                                        [TDClientDriverCameraUserId] = '{14}',  
-                                                        [TDClientDriverCameraPassword] = '{15}',  
-                                                        [TDClientVehicleCameraIPAddress] = '{16}',  
-                                                        [TDClientVehicleCameraUserId] = '{17}', 
-                                                        [TDClientVehicleCameraPassword] = '{18}' 
-                                                    WHERE [Id] = '{19}'");
+                                                    WHERE [Id] = '{6}'");
 
             queries.Add("InsertVehicleEntry", @"INSERT INTO [tbl_parking]
-                                                            ([TicketNumber],
+                                                            ([DeviceId],
+                                                             [TicketNumber],
                                                              [ValidationNumber],
                                                              [QRCode],
                                                              [VehicleNumber],
@@ -72,7 +46,7 @@ namespace Parking.Database.CommandFactory
                                                              [EntryTime],
                                                              [DriverImage],
                                                              [VehicleImage]) 
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}', '{6}', '{7}')");
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}', '{6}', '{7}', '{8}')");
 
         }
 
@@ -82,27 +56,10 @@ namespace Parking.Database.CommandFactory
             string parkingPlaceName,
             string twoWheelerParkingRatePerHour,
             string fourWheelerParkingRatePerHour,
-            string lostTicketPenality,
-            string TDClientPLCBoardPortNumber,
-            string TDServerIPAddress,
-            string TDServerPortNumber,
-            string TDClientDeviceId,
-            string TDClientUserId,
-            string TDClientPassword,
-            string TDClientLongLat,
-            string TDClientDriverCameraIPAddress,
-            string TDClientDriverCameraUserId,
-            string TDClientDriverCameraPassword,
-            string TDClientVehicleCameraIPAddress,
-            string TDClientVehicleCameraUserId,
-            string TDClientVehicleCameraPassword)
+            string lostTicketPenality)
         {
             var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
-                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, TDClientPLCBoardPortNumber,
-                                      TDServerIPAddress, TDServerPortNumber, TDClientDeviceId, TDClientUserId, TDClientPassword,
-                                      TDClientLongLat, TDClientDriverCameraIPAddress, TDClientDriverCameraUserId, TDClientDriverCameraPassword,
-                                      TDClientVehicleCameraIPAddress, TDClientVehicleCameraUserId, TDClientVehicleCameraPassword, 
-                                      MasterId);
+                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, MasterId);
             sqlDataAccess.ExecuteNonQuery(query);
         }
 
@@ -126,19 +83,31 @@ namespace Parking.Database.CommandFactory
 
         }
 
-        public void SaveVehicleEntry(string vehicleNumber, int vehicleType)
+        public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType)
         {
-            var ticketNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
-            var validationNumber = AlphaNumericCode.GenerateRandomNumber(TicketNumberLength);
+            var ticketNumber = new UniqueCode().GenerateCode();
+            var validationNumber = new UniqueCode().GenerateCode();
             var entryTime = DateTime.Now.ToString();
-            var code = QRCode.Generate(vehicleNumber, validationNumber, vehicleType, entryTime);
-            var driverImage = (Image)ParkingCamera.GetDriverImage();
-            var vehicleImage = (Image)ParkingCamera.GetVehicleImage();
+            var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, vehicleType, entryTime);
+            var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
+            var driverImage = (Image)IPCamera.GetDriverImage();
+            var vehicleImage = (Image)IPCamera.GetVehicleImage();
 
             try
             {
-                var insertQuery = string.Format(queries["InsertVehicleEntry"], ticketNumber, validationNumber, code, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage);
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], deviceId, 
+                    ticketNumber, validationNumber, qrCode, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
+
+                return new Ticket()
+                {
+                    TicketNumber = ticketNumber,
+                    ValidationNumber = validationNumber,
+                    VehicleNumber = vehicleNumber,
+                    QRCodeImage = qrCodeImage,
+                    QRCode = qrCode,
+                    EntryTime = entryTime
+                };
             }
             catch (Exception exception)
             {

@@ -56,5 +56,25 @@ D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Database\obj\Debug\Parking.Database.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Camera.Communicate.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Parking.Camera.Communicate.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Database.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Database.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Camera.Communicate.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Common.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Interfaces.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Microsoft.PointOfService.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Camera.Communicate.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Common.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Parking.Interfaces.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\Microsoft.PointOfService.xml
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\obj\Debug\Parking.Database.csprojAssemblyReference.cache
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\obj\Debug\Parking.Database.csproj.CoreCompileInputs.cache
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\obj\Debug\Parking.Database.csproj.CopyComplete
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\obj\Debug\Parking.Database.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\obj\Debug\Parking.Database.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\zxing.dll
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\zxing.pdb
+C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Database\bin\Debug\zxing.xml
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\zxing.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\zxing.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\zxing.xml
+D:\Projects\ParkingSoftware\TDClient\Parking.Database\bin\Debug\Newtonsoft.Json.Net20.dll

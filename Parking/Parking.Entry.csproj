@@ -103,12 +103,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\QRCodes\" />
+    <Folder Include="Tickets\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Parking.Camera.Communicate\Parking.CameraCommunicate.csproj">
-      <Project>{ca6aa9a7-4915-4bba-9c68-d24058c5e681}</Project>
-      <Name>Parking.CameraCommunicate</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Parking.Common\Parking.Common.csproj">
       <Project>{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}</Project>
       <Name>Parking.Common</Name>

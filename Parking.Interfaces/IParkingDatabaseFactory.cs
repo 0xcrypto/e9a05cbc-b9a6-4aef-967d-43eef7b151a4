@@ -1,4 +1,7 @@
-﻿using System.Data;
+﻿using Parking.Common.Model;
+using System;
+using System.Data;
+using System.Drawing;
 
 namespace Parking.Interfaces
 {
@@ -9,23 +12,10 @@ namespace Parking.Interfaces
             string parkingPlaceName,
             string twoWheelerParkingRatePerHour,
             string fourWheelerParkingRatePerHour,
-            string lostTicketPenality,
-            string TDClientPLCBoardPortNumber,
-            string TDServerIPAddress,
-            string TDServerPortNumber,
-            string TDClientDeviceId,
-            string TDClientUserId,
-            string TDClientPassword,
-            string TDClientLongLat,
-            string TDClientDriverCameraIPAddress,
-            string TDClientDriverCameraUserId,
-            string TDClientDriverCameraPassword,
-            string TDClientVehicleCameraIPAddress,
-            string TDClientVehicleCameraUserId,
-            string TDClientVehicleCameraPassword);
+            string lostTicketPenality);
 
         DataRow GetMasterSettings();
 
-        void SaveVehicleEntry(string vehicleNumber, int vehicleType);
+        Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType);
     }
 }
