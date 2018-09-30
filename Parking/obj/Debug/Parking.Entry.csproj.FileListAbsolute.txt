@@ -75,30 +75,6 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking\obj\Debug\Parking.Entry.cs
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking\obj\Debug\Parking.Entry.csproj.CopyComplete
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking\obj\Debug\Parking.Entry.exe
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking\obj\Debug\Parking.Entry.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csprojAssemblyReference.cache
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.Home.resources
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.Settings.resources
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.VehicleEntry.resources
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Properties.Resources.resources
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.GenerateResource.cache
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.CoreCompileInputs.cache
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.exe.config
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.exe
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Common.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Database.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.PortCommunicate.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\System.Drawing.Common.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Microsoft.PointOfService.dll
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Common.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Database.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.PortCommunicate.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Microsoft.PointOfService.xml
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.CopyComplete
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.exe
-D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\Parking.Entry.exe.config
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\Parking.Entry.exe
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\Parking.Entry.pdb
@@ -128,7 +104,31 @@ C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Par
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\zxing.dll
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\zxing.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking\bin\Debug\zxing.xml
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.exe.config
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.exe
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Entry.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Common.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Database.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.PortCommunicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\System.Drawing.Common.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Microsoft.PointOfService.dll
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\zxing.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Database.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.Interfaces.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Parking.PortCommunicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Microsoft.PointOfService.xml
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\zxing.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\zxing.xml
-D:\Projects\ParkingSoftware\TDClient\Parking\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.Home.resources
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.Settings.resources
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Forms.VehicleEntry.resources
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.Properties.Resources.resources
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.GenerateResource.cache
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.csproj.CopyComplete
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.exe
+D:\Projects\ParkingSoftware\TDClient\Parking\obj\Debug\Parking.Entry.pdb

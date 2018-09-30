@@ -48,8 +48,9 @@ namespace Parking.Database.CommandFactory
                                                              [VehicleImage]) 
                                                 VALUES ('{0}','{1}','{2}','{3}','{4}','{5}', '{6}', '{7}', '{8}')");
 
+            queries.Add("GetUniqueCode", @"select cast((Abs(Checksum(NewId()))%10) as varchar(1)) +  char(ascii('a') + (Abs(Checksum(NewId()))%25)) + 
+                                                char(ascii('A')+(Abs(Checksum(NewId()))%25)) + left(newid(),5) as UniqueCode");
         }
-
 
         public void UpdateMasterSettings(string companyName,
             string parkingPlaceCode,
@@ -85,8 +86,8 @@ namespace Parking.Database.CommandFactory
 
         public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType)
         {
-            var ticketNumber = new UniqueCode().GenerateCode();
-            var validationNumber = new UniqueCode().GenerateCode();
+            var ticketNumber = GetUniqueCode();
+            var validationNumber = GetUniqueCode();
             var entryTime = DateTime.Now.ToString();
             var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, vehicleType, entryTime);
             var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
@@ -104,6 +105,7 @@ namespace Parking.Database.CommandFactory
                     TicketNumber = ticketNumber,
                     ValidationNumber = validationNumber,
                     VehicleNumber = vehicleNumber,
+                    VehicleType = (vehicleType == 2) ? "Two Wheeler" : "Four Wheeler",
                     QRCodeImage = qrCodeImage,
                     QRCode = qrCode,
                     EntryTime = entryTime
@@ -114,6 +116,13 @@ namespace Parking.Database.CommandFactory
                 Console.WriteLine(exception);
                 throw;
             }
+        }
+
+        public string GetUniqueCode()
+        {
+            var sqlCommand = sqlDataAccess.GetCommand(queries["GetUniqueCode"]);
+            var dataRow = sqlDataAccess.Execute(sqlCommand).Rows[0];
+            return dataRow[0].ToString();
         }
     }
 }

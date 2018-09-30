@@ -25,15 +25,6 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parki
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CopyComplete
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.dll
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csprojAssemblyReference.cache
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CoreCompileInputs.cache
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CopyComplete
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.dll
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\Parking.Interfaces.dll
@@ -50,11 +41,20 @@ C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Par
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\Microsoft.PointOfService.xml
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\zxing.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.SerialPort\bin\Debug\zxing.xml
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.PortCommunicate.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Common.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Microsoft.PointOfService.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\zxing.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Interfaces.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Parking.Common.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Microsoft.PointOfService.xml
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\zxing.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\zxing.xml
-D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CoreCompileInputs.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.csproj.CopyComplete
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.SerialPort\obj\Debug\Parking.PortCommunicate.pdb

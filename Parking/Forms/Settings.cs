@@ -65,15 +65,6 @@ namespace Parking.Entry.Forms
             txtTwoWheelerParkingChargesPerHour.Text = dr[3].ToString().Trim();
             txtFourWheelerParkingChargesPerHour.Text = dr[4].ToString().Trim();
             txtLostTicketPenalty.Text = dr[5].ToString().Trim();
-            //LoadPorts(dr[6].ToString().Trim());
-        }
-
-        private void LoadPorts(string selectedPort) {
-            //foreach (string port in SerialPort.GetPortNames()) {
-           //     cbTDClientPLCBoardPortNumber.Items.Add(port);
-            //}
-
-           // cbTDClientPLCBoardPortNumber.SelectedIndex = cbTDClientPLCBoardPortNumber.FindStringExact(selectedPort);
         }
 
         private void BtnConnectPortClick(object sender, EventArgs e)
@@ -84,7 +75,7 @@ namespace Parking.Entry.Forms
             var result = serialPortCommunicate.Connect(portName, BAUD_RATE, PARITY, DATA_BITS, STOP_BITS);
             if (result)
             {
-                lblSettingStatus.Text = "Port "+ portName + "connected successfully";
+                lblSettingStatus.Text = "Port "+ portName + " connected successfully";
                 lblSettingStatus.ForeColor = Color.Green;
             }
             else

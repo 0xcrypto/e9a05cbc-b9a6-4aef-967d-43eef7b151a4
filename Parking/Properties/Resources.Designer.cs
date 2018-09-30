@@ -63,9 +63,9 @@ namespace Parking.Entry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap parking {
+        internal static System.Drawing.Bitmap BackSpace {
             get {
-                object obj = ResourceManager.GetObject("parking", resourceCulture);
+                object obj = ResourceManager.GetObject("BackSpace", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Parking.Entry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap parking1 {
+        internal static System.Drawing.Bitmap ParkingBackground {
             get {
-                object obj = ResourceManager.GetObject("parking1", resourceCulture);
+                object obj = ResourceManager.GetObject("ParkingBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

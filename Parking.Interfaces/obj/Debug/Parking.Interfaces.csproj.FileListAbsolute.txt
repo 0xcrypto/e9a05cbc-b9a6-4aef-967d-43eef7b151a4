@@ -15,11 +15,6 @@ D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parki
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
 D:\Projects\ParkingSoftware-TDClient\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
@@ -34,13 +29,18 @@ C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Par
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\bin\Debug\zxing.xml
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\obj\Debug\Parking.Interfaces.csprojAssemblyReference.cache
 C:\Users\Mohit\Desktop\Parking Software\e9a05cbc-b9a6-4aef-967d-43eef7b151a4\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CopyComplete
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Interfaces.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Common.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Microsoft.PointOfService.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\zxing.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Newtonsoft.Json.Net20.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Parking.Common.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Microsoft.PointOfService.xml
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\zxing.pdb
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\zxing.xml
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csprojAssemblyReference.cache
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CoreCompileInputs.cache
 D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.csproj.CopyComplete
-D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\bin\Debug\Newtonsoft.Json.Net20.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.dll
+D:\Projects\ParkingSoftware\TDClient\Parking.Interfaces\obj\Debug\Parking.Interfaces.pdb

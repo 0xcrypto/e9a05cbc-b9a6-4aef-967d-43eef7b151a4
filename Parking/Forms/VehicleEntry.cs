@@ -15,6 +15,12 @@ namespace Parking.Entry.Forms
         private TDClientSetting tdSetting;
         private readonly ParkingDatabaseFactory parkingDatabaseFactory;
         private static Ticket ticket;
+        private string CompnayName;
+        private string ParkingPlaceName;
+        private string TwoWheelerParkingCharge;
+        private string FourWheelerParkingCharge;
+        private string LostTicketPenality;
+        private string TicketFooterString;
 
         public VehicleEntry()
         {
@@ -24,7 +30,9 @@ namespace Parking.Entry.Forms
             tdSetting = configrationReader.Load();
 
             if (tdSetting.DeviceId == null)
-                MessageBox.Show("Problem Loading Configuration Information");
+                MessageBox.Show("Problem Loading Device Configuration");
+
+            LoadMasterSetting();
         }
 
         private void OkButtonClick(object sender, EventArgs e)
@@ -49,7 +57,7 @@ namespace Parking.Entry.Forms
             {
                 PrinterSettings = new PrinterSettings()
                 {
-                    //PrinterName = "Microsoft Print to PDF",
+                    PrinterName = new PrinterSettings().PrinterName,
                     PrintToFile = true,
                     PrintFileName = Path.Combine(directory, file + ".pdf"),
                 }
@@ -57,39 +65,82 @@ namespace Parking.Entry.Forms
             doc.DefaultPageSettings.PaperSize = new PaperSize("Parking Slip", 227, 393);
             doc.PrintPage += new PrintPageEventHandler(this.PrintPage);
             doc.Print();
+
+            /*
+                TODO: REMOVE FOR LIVE RUN
+                PrintDialog pdi = new PrintDialog();
+                pdi.Document = doc;
+                if (pdi.ShowDialog() == DialogResult.OK) {
+                    doc.Print();
+                }
+                else {
+                    MessageBox.Show("Print Cancelled");
+                }
+            */
         }
 
         public void PrintPage(object sender, PrintPageEventArgs e)
         {
             Graphics g = e.Graphics;
-            var SPACE = 10;
+            Font Font_12 = new Font("Times new Roman", 12, FontStyle.Regular);
+            Font Font_10 = new Font("Times new Roman", 10, FontStyle.Regular);
+            Font Font_8 = new Font("Times new Roman", 8, FontStyle.Regular);
+            float leading = 4;
+            float startX = 0;
+            float startY = leading;
+            float Offset = 0;
+            float lineheight12 = Font_12.GetHeight() + leading;
+            float lineheight8 = Font_8.GetHeight() + leading;
+            float lineheightQRCode = 110 + leading;
+            int ReciptWidth = 227;
+            int ReciptHeight = 393;
+            var TICKET_NO_LABEL = "Ticket No. : ";
+            var VALIDATION_NO_LABEL = "Validation No. : ";
+            var VEHICLE_NO_LABEL = "Vehicle No. : ";
+            var VEHICLE_IN_LABEL = "IN: ";
 
-            var font = new Font("Times new Roman", 12, FontStyle.Regular);
-            var smallFont = new Font("Times new Roman", 8, FontStyle.Regular);
+            StringFormat formatLeft = new StringFormat(StringFormatFlags.NoClip);
+            StringFormat formatCenter = new StringFormat(formatLeft)
+            {
+                Alignment = StringAlignment.Center
+            };
+            SizeF layoutSize = new SizeF(ReciptWidth - Offset * 2, ReciptHeight);
+            RectangleF layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            Brush brush = Brushes.Black;
 
-            g.DrawString("NDMC SMART PARKING", font, Brushes.Black, new PointF(10, 10));
-            g.DrawString("PALIKA PARKING", font, Brushes.Black, new PointF(10, 30));
-            g.DrawString("Ticket No. :", font, Brushes.Black, new PointF(10, 50));
-            g.DrawString(ticket.TicketNumber, font, Brushes.Black, new PointF(120, 50));
-            g.DrawString("Validation No. :", font, Brushes.Black, new PointF(10, 70)); 
-            g.DrawString(ticket.ValidationNumber, font, Brushes.Black, new PointF(120, 70));
-
+            g.DrawString(CompnayName, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(ParkingPlaceName, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(TICKET_NO_LABEL+ticket.TicketNumber, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(VALIDATION_NO_LABEL+ticket.ValidationNumber, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawImage(ticket.QRCodeImage, 50, 100);
-
-            g.DrawString(ticket.QRCode.Substring(0, 40), smallFont, Brushes.Black, new PointF(10, 220), StringFormat.GenericTypographic);
-
-            g.DrawString("Vehicle No. :", font, Brushes.Black, new PointF(10, 250));
-            g.DrawString("_"+ticket.VehicleNumber, font, Brushes.Black, new PointF(120, 250));
-            g.DrawString("In Time:", font, Brushes.Black, new PointF(10, 270));
-            g.DrawString(ticket.EntryTime.ToString(), font, Brushes.Black, new PointF(120, 270));
-
-            g.DrawString("Parking at Owners Risk", font, Brushes.Black, new PointF(10, 290));
-            g.DrawString("Two Wheeler Rs. 5 Per Hour", font, Brushes.Black, new PointF(10, 310));
-            g.DrawString("Lost ticket penalty Rs.50/-", font, Brushes.Black, new PointF(10, 330));
-            g.DrawString("and Parking charges as applicable.", font, Brushes.Black, new PointF(10, 350));
-            g.DrawString("NDMC smart Parking", font, Brushes.Black, new PointF(10, 370));
-
+            Offset = Offset + lineheightQRCode;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(ticket.QRCode.Substring(0, 30), Font_8, brush, layout, formatCenter);
+            Offset = Offset + lineheight8;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(VEHICLE_NO_LABEL+ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(ticket.VehicleType, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(VEHICLE_IN_LABEL+ticket.EntryTime, Font_12, brush, layout, formatCenter);
+            Offset = Offset + lineheight12;
+            layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
+            g.DrawString(TicketFooterString, Font_10, brush, layout, formatCenter);
             g.Dispose();
+            Font_12.Dispose();
+            Font_10.Dispose();
+            Font_8.Dispose();
+
         }
 
         private void AddText(string postfixText)
@@ -194,5 +245,19 @@ namespace Parking.Entry.Forms
             Size = new Size(1024, 768);
         }
 
+        private void LoadMasterSetting()
+        {
+            var dr = parkingDatabaseFactory.GetMasterSettings();
+            CompnayName = dr[0].ToString().Trim();
+            ParkingPlaceName = dr[2].ToString().Trim();
+            TwoWheelerParkingCharge = dr[3].ToString().Trim();
+            FourWheelerParkingCharge = dr[4].ToString().Trim();
+            LostTicketPenality = dr[5].ToString().Trim();
+            TicketFooterString = String.Format("Parking at Owners Risk.\n " +
+                "Four Wheeler Rs. {0} Per Hour.\n " +
+                "Lost Ticket Penality Rs. {1}/-\n" +
+                "and Parking Charges as applicable.\n " +
+                "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+        }
     }
 }

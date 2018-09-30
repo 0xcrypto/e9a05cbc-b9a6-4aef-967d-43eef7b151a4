@@ -101,31 +101,33 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\QRCodes\" />
-    <Folder Include="Tickets\" />
+    <None Include="Resources\parking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BackSpace.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Parking.Common\Parking.Common.csproj">
-      <Project>{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}</Project>
+      <Project>{0606507d-1f91-45cd-89b2-8ef5ddefe7ec}</Project>
       <Name>Parking.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Parking.Database\Parking.Database.csproj">
-      <Project>{11341886-B081-4436-97C1-8F070EE65C31}</Project>
+      <Project>{11341886-b081-4436-97c1-8f070ee65c31}</Project>
       <Name>Parking.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\Parking.Interfaces\Parking.Interfaces.csproj">
-      <Project>{D4DD30AB-03C0-4FE5-A541-BAF8B53F4F90}</Project>
+      <Project>{d4dd30ab-03c0-4fe5-a541-baf8b53f4f90}</Project>
       <Name>Parking.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\Parking.SerialPort\Parking.PortCommunicate.csproj">
-      <Project>{CBAD1054-CE00-4732-ABD0-D8478619A1E0}</Project>
+      <Project>{cbad1054-ce00-4732-abd0-d8478619a1e0}</Project>
       <Name>Parking.PortCommunicate</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\parking.jpg" />
-    <None Include="Resources\parking.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
