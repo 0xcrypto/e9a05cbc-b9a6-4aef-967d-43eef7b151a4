@@ -7,7 +7,8 @@ namespace Parking.Common
 {
     public class TDClientSetting
     {
-        public string DeviceId { get; set; }
+        public string TDClientDeviceId { get; set; }
+        public string MPSDeviceId { get; set; }
         public string UserId { get; set; }
         public string Password { get; set; }
         public string LongLat { get; set; }
@@ -18,5 +19,12 @@ namespace Parking.Common
         public string VehicleCameraIPAddress { get; set; }
         public string VehicleCameraUsername { get; set; }
         public string VehicleCameraPassword { get; set; }
+        public string TdServerIPAddress { get; set; }
+        public string TdServerPort { get; set; }
+        public string TdServerUsername { get; set; }
+        public string TdServerPassword { get; set; }
+        public string TwoWheelerParkingCharge { get; set; }
+        public string FourWheelerParkingCharge { get; set; }
+
     }
 }

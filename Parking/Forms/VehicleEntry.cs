@@ -6,7 +6,6 @@ using Parking.Database.CommandFactory;
 using Parking.Common;
 using Parking.Common.Model;
 using System.IO;
-using System.Reflection;
 
 namespace Parking.Entry.Forms
 {
@@ -26,10 +25,10 @@ namespace Parking.Entry.Forms
         {
             InitializeComponent();
             parkingDatabaseFactory = new ParkingDatabaseFactory();
-            var configrationReader = new ConfigurationReader(Application.ExecutablePath, @"DeviceConfig.json");
-            tdSetting = configrationReader.Load();
 
-            if (tdSetting.DeviceId == null)
+            tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
+
+            if (tdSetting.TDClientDeviceId == null)
                 MessageBox.Show("Problem Loading Device Configuration");
 
             LoadMasterSetting();
@@ -37,46 +36,60 @@ namespace Parking.Entry.Forms
 
         private void OkButtonClick(object sender, EventArgs e)
         {
-            if (tdSetting.DeviceId == null)
-                return;
+            try
+            {
+                if (tdSetting.TDClientDeviceId == null)
+                    return;
 
-            var vehicleType = 2; // 2 or 4
-            var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
-            ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.DeviceId, vehicleNumber, vehicleType);
+                var vehicleType = 2; // 2 or 4
+                var ParkingCharge = vehicleType == 2 ? tdSetting.TwoWheelerParkingCharge : tdSetting.FourWheelerParkingCharge;
+                var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
+                ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, vehicleNumber, vehicleType, ParkingCharge, tdSetting.MPSDeviceId);
 
-            PrintTicket();
-            Hide();
+                PrintTicket();
+                Hide();
+            }
+            catch (Exception exception)
+            {
+                FileLogger.Log($"Ticket Processing Failed as : {exception.Message} ");
+            }
         }
 
-        public void PrintTicket()
+        private void PrintTicket()
         {
-            string file = Guid.NewGuid().ToString();
-            string directory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"Tickets\");
-            
-            PrintDocument doc = new PrintDocument()
+            try
             {
-                PrinterSettings = new PrinterSettings()
-                {
-                    PrinterName = new PrinterSettings().PrinterName,
-                    PrintToFile = true,
-                    PrintFileName = Path.Combine(directory, file + ".pdf"),
-                }
-            };
-            doc.DefaultPageSettings.PaperSize = new PaperSize("Parking Slip", 227, 393);
-            doc.PrintPage += new PrintPageEventHandler(this.PrintPage);
-            doc.Print();
+                string file = Guid.NewGuid().ToString();
+                string directory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"Tickets\");
 
-            /*
-                TODO: REMOVE FOR LIVE RUN
-                PrintDialog pdi = new PrintDialog();
-                pdi.Document = doc;
-                if (pdi.ShowDialog() == DialogResult.OK) {
-                    doc.Print();
-                }
-                else {
-                    MessageBox.Show("Print Cancelled");
-                }
-            */
+                PrintDocument doc = new PrintDocument()
+                {
+                    PrinterSettings = new PrinterSettings()
+                    {
+                        PrinterName = new PrinterSettings().PrinterName,
+                        PrintToFile = true,
+                        PrintFileName = Path.Combine(directory, file + ".pdf"),
+                    }
+                };
+                doc.DefaultPageSettings.PaperSize = new PaperSize("Parking Slip", 227, 393);
+                doc.PrintPage += new PrintPageEventHandler(this.PrintPage);
+                doc.Print();
+                /*
+               TODO: REMOVE FOR LIVE RUN
+               PrintDialog pdi = new PrintDialog();
+               pdi.Document = doc;
+               if (pdi.ShowDialog() == DialogResult.OK) {
+                   doc.Print();
+               }
+               else {
+                   MessageBox.Show("Print Cancelled");
+               }
+           */
+            }
+            catch (Exception e)
+            {
+                FileLogger.Log($"Ticket could not be printed Successfully as : {e.Message}");
+            }
         }
 
         public void PrintPage(object sender, PrintPageEventArgs e)
@@ -114,10 +127,10 @@ namespace Parking.Entry.Forms
             g.DrawString(ParkingPlaceName, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(TICKET_NO_LABEL+ticket.TicketNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(TICKET_NO_LABEL + ticket.TicketNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VALIDATION_NO_LABEL+ticket.ValidationNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(VALIDATION_NO_LABEL + ticket.ValidationNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawImage(ticket.QRCodeImage, 50, 100);
@@ -126,13 +139,13 @@ namespace Parking.Entry.Forms
             g.DrawString(ticket.QRCode.Substring(0, 30), Font_8, brush, layout, formatCenter);
             Offset = Offset + lineheight8;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VEHICLE_NO_LABEL+ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(VEHICLE_NO_LABEL + ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawString(ticket.VehicleType, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VEHICLE_IN_LABEL+ticket.EntryTime, Font_12, brush, layout, formatCenter);
+            g.DrawString(VEHICLE_IN_LABEL + ticket.EntryTime, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawString(TicketFooterString, Font_10, brush, layout, formatCenter);
@@ -247,17 +260,24 @@ namespace Parking.Entry.Forms
 
         private void LoadMasterSetting()
         {
-            var dr = parkingDatabaseFactory.GetMasterSettings();
-            CompnayName = dr[0].ToString().Trim();
-            ParkingPlaceName = dr[2].ToString().Trim();
-            TwoWheelerParkingCharge = dr[3].ToString().Trim();
-            FourWheelerParkingCharge = dr[4].ToString().Trim();
-            LostTicketPenality = dr[5].ToString().Trim();
-            TicketFooterString = String.Format("Parking at Owners Risk.\n " +
-                "Four Wheeler Rs. {0} Per Hour.\n " +
-                "Lost Ticket Penality Rs. {1}/-\n" +
-                "and Parking Charges as applicable.\n " +
-                "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+            try
+            {
+                var dr = parkingDatabaseFactory.GetMasterSettings();
+                CompnayName = dr[0].ToString().Trim();
+                ParkingPlaceName = dr[2].ToString().Trim();
+                TwoWheelerParkingCharge = dr[3].ToString().Trim();
+                FourWheelerParkingCharge = dr[4].ToString().Trim();
+                LostTicketPenality = dr[5].ToString().Trim();
+                TicketFooterString = String.Format("Parking at Owners Risk.\n " +
+                    "Four Wheeler Rs. {0} Per Hour.\n " +
+                    "Lost Ticket Penality Rs. {1}/-\n" +
+                    "and Parking Charges as applicable.\n " +
+                    "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+            }
+            catch (Exception exception)
+            {
+                throw;
+            }            
         }
     }
 }
