@@ -5,8 +5,9 @@ namespace Parking.Common
 {
     public sealed class ConfigurationReader
     {
-        private static ConfigurationReader instance = null;
-        private string ConfigFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), "DeviceConfig.json");
+        private static ConfigurationReader configurationReader = null;
+        private const string configurationFileName = "DeviceConfig.json";
+        private readonly string ConfigFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), configurationFileName);
         private ConfigurationReader()
         {
 
@@ -40,11 +41,11 @@ namespace Parking.Common
         {
             get
             {
-                if (instance == null)
+                if (configurationReader == null)
                 {
-                    instance = new ConfigurationReader();
+                    configurationReader = new ConfigurationReader();
                 }
-                return instance;
+                return configurationReader;
             }
         }
     }

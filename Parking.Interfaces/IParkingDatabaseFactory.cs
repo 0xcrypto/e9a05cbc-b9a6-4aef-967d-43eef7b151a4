@@ -16,7 +16,7 @@ namespace Parking.Interfaces
 
         DataRow GetMasterSettings();
 
-        Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType, string parkingCharges, string mPSDeviceId);
+        Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType);
 
         string GetUniqueCode();
     }

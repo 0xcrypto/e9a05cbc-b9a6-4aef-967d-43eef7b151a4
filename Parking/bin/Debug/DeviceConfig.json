@@ -1,6 +1,5 @@
 {
   "TDClientDeviceId": "187107171114011",
-  "MPSDeviceId": "194537171114011",
   "UserId": "DISBIKE02",
   "Password": "12345678",
   "LongLat": "0,0",
@@ -14,7 +13,5 @@
   "TdServerIPAddress": "192.168.1.11",
   "TdServerPort": "1433",
   "TdServerUsername": "sa",
-  "TdServerPassword": "Welcome1234",
-  "TwoWheelerParkingCharge": "20",
-  "FourWheelerParkingCharge": "50"
+  "TdServerPassword": "Welcome1234"
 }

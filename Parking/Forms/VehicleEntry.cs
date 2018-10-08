@@ -29,7 +29,7 @@ namespace Parking.Entry.Forms
             tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
 
             if (tdSetting.TDClientDeviceId == null)
-                MessageBox.Show("Problem Loading Device Configuration");
+                FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
 
             LoadMasterSetting();
         }
@@ -42,9 +42,8 @@ namespace Parking.Entry.Forms
                     return;
 
                 var vehicleType = 2; // 2 or 4
-                var ParkingCharge = vehicleType == 2 ? tdSetting.TwoWheelerParkingCharge : tdSetting.FourWheelerParkingCharge;
                 var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
-                ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, vehicleNumber, vehicleType, ParkingCharge, tdSetting.MPSDeviceId);
+                ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, vehicleNumber, vehicleType);
 
                 PrintTicket();
                 Hide();
@@ -274,7 +273,7 @@ namespace Parking.Entry.Forms
                     "and Parking Charges as applicable.\n " +
                     "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 throw;
             }            

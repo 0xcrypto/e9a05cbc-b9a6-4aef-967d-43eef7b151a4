@@ -17,7 +17,7 @@ namespace Parking.PortCommunicate
             {
                 sPort.Open();
                 sPort.DataReceived += SubscribePortDataReceived;
-                Console.WriteLine("Connected Port");
+                FileLogger.Log($"Port Connected");
                 return true;
             }
             catch (Exception e)
@@ -57,7 +57,7 @@ namespace Parking.PortCommunicate
             }
             catch (Exception e)
             {
-                FileLogger.Log($"No callback assigned for Vehicle Entry : {e.Message}");
+                FileLogger.Log($"Problem in receiving data from PLC Board on PortNumber as : {e.Message}");
             }
         }
     }

@@ -46,13 +46,11 @@ namespace Parking.Database.CommandFactory
                                                              [EntryTime],
                                                              [DriverImage],
                                                              [VehicleImage],
-                                                             [MPSDeviceId],
                                                              [IsParkingEntryDetailsUploadedToServer],
-                                                             [IsParkingExitDetailsUploadedToServer],
-                                                             [ParkingCharge])
+                                                             [IsParkingExitDetailsUploadedToServer])
                                                             
                                                               
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')");
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')");
 
             queries.Add("GetUniqueCode", @"select cast((Abs(Checksum(NewId()))%10) as varchar(1)) +  char(ascii('a') + (Abs(Checksum(NewId()))%25)) + 
                                                 char(ascii('A')+(Abs(Checksum(NewId()))%25)) + left(newid(),5) as UniqueCode");
@@ -99,7 +97,7 @@ namespace Parking.Database.CommandFactory
 
         }
 
-        public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType, string parkingCharge, string MPSDeviceId)
+        public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType)
         {
             var ticketNumber = GetUniqueCode();
             var validationNumber = GetUniqueCode();
@@ -112,7 +110,7 @@ namespace Parking.Database.CommandFactory
             try
             {
                 var insertQuery = string.Format(queries["InsertVehicleEntry"], deviceId,
-                    ticketNumber, validationNumber, qrCode, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage, MPSDeviceId, 0, 0, parkingCharge);
+                    ticketNumber, validationNumber, qrCode, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage, 0, 0);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
 
                 return new Ticket()

@@ -26,7 +26,7 @@ namespace Parking.Entry.Forms
             tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
 
             if (tdSetting.TDClientDeviceId == null)
-                MessageBox.Show("Problem Loading Configuration Information");
+                FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
         }
 
         private void BtnSaveClick(object sender, EventArgs e)
@@ -85,11 +85,15 @@ namespace Parking.Entry.Forms
                 {
                     lblSettingStatus.Text = "Port " + portName + " connected successfully";
                     lblSettingStatus.ForeColor = Color.Green;
+
+                    FileLogger.Log($"TDClient connected to port successfully");
                 }
                 else
                 {
                     lblSettingStatus.Text = "Problem connecting to Port " + portName;
                     lblSettingStatus.ForeColor = Color.Red;
+
+                    FileLogger.Log($"Connection of TDClient with port failed");
                 }
                 serialPortCommunicate.RegisterVehicleEntryCallBack(HandleVehicleEntryData);
             }
