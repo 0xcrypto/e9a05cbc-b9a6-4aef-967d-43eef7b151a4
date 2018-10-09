@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using Parking.Common;
 using Parking.Interfaces;
 
 namespace Parking.PortCommunicate
@@ -16,15 +17,14 @@ namespace Parking.PortCommunicate
             {
                 sPort.Open();
                 sPort.DataReceived += SubscribePortDataReceived;
-                Console.WriteLine("Connected Port");
+                FileLogger.Log($"Port Connected");
                 return true;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString(), "Error");
+                FileLogger.Log($"Connection between TDclient and Device failed as : {e.Message}");
                 return false;
             }
-
         }
 
         private void SubscribePortDataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -57,20 +57,8 @@ namespace Parking.PortCommunicate
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                FileLogger.Log($"Problem in receiving data from PLC Board on PortNumber as : {e.Message}");
             }
         }
-
-        //private void VehicleEntry()
-        //{
-        //    Console.WriteLine("Vehicle come to Entry Gate");
-        //    ThreadPool.QueueUserWorkItem(VehicleEntryLaunch);
-        //}
-        //private void VehicleEntryLaunch(object state)
-        //{
-        //    var form2 = new VehicleEntry();
-        //    form2.Text = "Bad one";
-        //    form2.Show();
-        //}
     }
 }

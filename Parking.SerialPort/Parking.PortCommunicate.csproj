@@ -44,6 +44,10 @@
     <Compile Include="SerialPortCommunicate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Parking.Common\Parking.Common.csproj">
+      <Project>{0606507D-1F91-45CD-89B2-8EF5DDEFE7EC}</Project>
+      <Name>Parking.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Parking.Interfaces\Parking.Interfaces.csproj">
       <Project>{D4DD30AB-03C0-4FE5-A541-BAF8B53F4F90}</Project>
       <Name>Parking.Interfaces</Name>

@@ -1,36 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using Newtonsoft.Json;
 
 namespace Parking.Common
 {
-    public class ConfigurationReader
+    public sealed class ConfigurationReader
     {
-        private string ConfigFilePath { get; set; }
-
-        public ConfigurationReader(string folder, string file)
+        private static ConfigurationReader configurationReader = null;
+        private const string configurationFileName = "DeviceConfig.json";
+        private readonly string ConfigFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), configurationFileName);
+        private ConfigurationReader()
         {
-            ConfigFilePath = Path.Combine(Path.GetDirectoryName(folder), file);
+
         }
 
-        public TDClientSetting Load()
+        public TDClientSetting GetConfigurationSettings()
         {
             TDClientSetting setting = null;
-
-            if (!Directory.Exists(ConfigFilePath))
+            try
             {
-                setting = new TDClientSetting();
+                if (!File.Exists(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), "DeviceConfig.json")))
+                {
+                    setting = new TDClientSetting();
+                }
+
+                using (StreamReader reader = new StreamReader(ConfigFilePath))
+                {
+                    setting = JsonConvert.DeserializeObject<TDClientSetting>(reader.ReadToEnd());
+                }
             }
-
-            using (StreamReader reader = new StreamReader(ConfigFilePath))
+            catch (System.Exception e)
             {
-                setting = JsonConvert.DeserializeObject<TDClientSetting>(reader.ReadToEnd());
+                FileLogger.Log($"Configuration settings could not be loaded successfully as : {e.Message}");
+                throw;
             }
 
             return setting;
+
+        }
+        public static ConfigurationReader Instance
+        {
+            get
+            {
+                if (configurationReader == null)
+                {
+                    configurationReader = new ConfigurationReader();
+                }
+                return configurationReader;
+            }
         }
     }
 }
