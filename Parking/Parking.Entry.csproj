@@ -101,7 +101,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\TwoWheelerImage.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\parking.jpg" />
   </ItemGroup>
@@ -128,6 +130,22 @@
       <Project>{cbad1054-ce00-4732-abd0-d8478619a1e0}</Project>
       <Name>Parking.PortCommunicate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Parking.Utilities\Parking.Utilities.csproj">
+      <Project>{61f16ebb-c8ba-466d-9da4-e07e1a5f472e}</Project>
+      <Name>Parking.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Four-Wheeler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Two-Wheeler.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Four_Wheeler_Img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Two_Wheeler_Img.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

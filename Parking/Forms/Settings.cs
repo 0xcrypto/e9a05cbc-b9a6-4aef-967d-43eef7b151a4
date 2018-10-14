@@ -23,7 +23,7 @@ namespace Parking.Entry.Forms
         {
             InitializeComponent();
             parkingDatabaseFactory = new ParkingDatabaseFactory();            
-            tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
+            tdSetting = ConfigurationReader.GetConfigurationSettings();
 
             if (tdSetting.TDClientDeviceId == null)
                 FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
@@ -103,16 +103,16 @@ namespace Parking.Entry.Forms
             }
         }
 
-        private void HandleVehicleEntryData(string obj)
+        private void HandleVehicleEntryData(string dataRecieved)
         {
-            ThreadPool.QueueUserWorkItem(VehicleLaunch);
+            ThreadPool.QueueUserWorkItem(VehicleLaunch, dataRecieved);
         }
 
         private void VehicleLaunch(object state)
         {
             Invoke((Action)(() =>
             {
-                var vehicleEntry = new VehicleEntry();
+                var vehicleEntry = new VehicleEntry(state.ToString());
                 vehicleEntry.Show();
             }));
         }

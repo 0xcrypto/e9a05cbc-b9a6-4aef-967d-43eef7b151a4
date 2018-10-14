@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parking.Common.Enums;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -37,10 +38,6 @@ namespace Parking.Entry.Forms
         {
 
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
+               
     }
 }

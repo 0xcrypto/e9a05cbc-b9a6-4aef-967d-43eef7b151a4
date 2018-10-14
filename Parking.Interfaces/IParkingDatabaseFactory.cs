@@ -1,7 +1,6 @@
-﻿using Parking.Common.Model;
-using System;
+﻿using Parking.Common.Enums;
+using Parking.Common.Model;
 using System.Data;
-using System.Drawing;
 
 namespace Parking.Interfaces
 {
@@ -16,7 +15,7 @@ namespace Parking.Interfaces
 
         DataRow GetMasterSettings();
 
-        Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType);
+        void SaveVehicleEntry(string deviceId, Ticket ticket);
 
         string GetUniqueCode();
     }

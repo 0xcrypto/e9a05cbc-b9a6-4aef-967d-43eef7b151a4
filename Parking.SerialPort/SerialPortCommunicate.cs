@@ -33,7 +33,8 @@ namespace Parking.PortCommunicate
 
             switch (dataReceived)
             {
-                case "PARKING_ENTRY":
+                case "TWO_WHEELER_PARKING_ENTRY":
+                case "FOUR_WHEELER_PARKING_ENTRY":
                     vehicleEntryCallback(dataReceived);
                     break;
                 case "PARKING_EXIT":

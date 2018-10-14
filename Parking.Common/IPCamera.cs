@@ -10,7 +10,7 @@ namespace Parking.Common
 {
     public class IPCamera
     {
-        private const string DRIVER_IMAGE_URL = "https://dds.georgia.gov/sites/dds.georgia.gov/files/Teen%20Driver4.jpg";
+        private const string DRIVER_IMAGE_URL = "https://cleanvehiclerebate.org/sites/default/files/2014_Hyundai_Tucson_Fuel_Cell.jpg";
         private const string VEHICLE_IMAGE_URL = "https://cleanvehiclerebate.org/sites/default/files/2014_Hyundai_Tucson_Fuel_Cell.jpg";
 
         public static Bitmap GetDriverImage()
@@ -51,7 +51,7 @@ namespace Parking.Common
                     image = new Bitmap(stream);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 image = new Bitmap(1, 1);
             }

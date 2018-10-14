@@ -145,7 +145,7 @@ namespace Parking.Database
 
         private static string ConstructConnectionStringWithServerDetails()
         {
-            var tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
+            var tdSetting = ConfigurationReader.GetConfigurationSettings();
             var connectionString = $"Data Source = {tdSetting.TdServerIPAddress},{tdSetting.TdServerPort}; Network Library = DBMSSOCN; Initial Catalog = db_Parking; User ID = {tdSetting.TdServerUsername}; Password = {tdSetting.TdServerPassword};";
 
             return connectionString;

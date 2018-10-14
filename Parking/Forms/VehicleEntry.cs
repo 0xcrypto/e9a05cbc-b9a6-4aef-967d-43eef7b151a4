@@ -6,6 +6,9 @@ using Parking.Database.CommandFactory;
 using Parking.Common;
 using Parking.Common.Model;
 using System.IO;
+using Parking.Common.Enums;
+using System.Threading;
+using Parking.Utilities;
 
 namespace Parking.Entry.Forms
 {
@@ -20,13 +23,19 @@ namespace Parking.Entry.Forms
         private string FourWheelerParkingCharge;
         private string LostTicketPenality;
         private string TicketFooterString;
+        private VehicleType _vehicleType;
+        public VehicleEntry(string vehicleType) : this()
+        {
+            //Assign Vehicle Type on the basis of message sent from PLC Board
+            _vehicleType = vehicleType.Equals("TWO_WHEELER_PARKING_ENTRY") ? VehicleType.Two_Wheeler : VehicleType.Four_Wheeler;
+        }
 
         public VehicleEntry()
         {
             InitializeComponent();
             parkingDatabaseFactory = new ParkingDatabaseFactory();
 
-            tdSetting = ConfigurationReader.Instance.GetConfigurationSettings();
+            tdSetting = ConfigurationReader.GetConfigurationSettings();
 
             if (tdSetting.TDClientDeviceId == null)
                 FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
@@ -41,18 +50,52 @@ namespace Parking.Entry.Forms
                 if (tdSetting.TDClientDeviceId == null)
                     return;
 
-                var vehicleType = 2; // 2 or 4
                 var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
-                ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, vehicleNumber, vehicleType);
 
+                generateTicket(vehicleNumber);
                 PrintTicket();
                 Hide();
+
+                parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, ticket);
+
+                ThreadPool.QueueUserWorkItem(Queuer.Dequeue, null);
             }
             catch (Exception exception)
             {
+                ThreadPool.QueueUserWorkItem(Queuer.Queue, ticket);
                 FileLogger.Log($"Ticket Processing Failed as : {exception.Message} ");
             }
+            finally
+            {
+                _vehicleType = VehicleType.Unknown;
+                ticket = null;
+            }
         }
+
+        private void generateTicket(string vehicleNumber)
+        {
+            var ticketNumber = parkingDatabaseFactory.GetUniqueCode();
+            var validationNumber = parkingDatabaseFactory.GetUniqueCode();
+            var entryTime = DateTime.Now.ToString();
+            var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, (int)_vehicleType, entryTime);
+            var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
+            var driverImage = (Image)IPCamera.GetDriverImage();
+            var vehicleImage = (Image)IPCamera.GetVehicleImage();
+
+            ticket = new Ticket()
+            {
+                TicketNumber = ticketNumber,
+                ValidationNumber = validationNumber,
+                VehicleNumber = vehicleNumber,
+                VehicleType = _vehicleType,
+                QRCodeImage = qrCodeImage,
+                QRCode = qrCode,
+                EntryTime = entryTime,
+                DriverImage = (Bitmap)driverImage,
+                VehicleImage= (Bitmap)vehicleImage
+            };
+        }
+
 
         private void PrintTicket()
         {
@@ -141,7 +184,7 @@ namespace Parking.Entry.Forms
             g.DrawString(VEHICLE_NO_LABEL + ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(ticket.VehicleType, Font_12, brush, layout, formatCenter);
+            g.DrawString(ticket.VehicleType.ToString(), Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawString(VEHICLE_IN_LABEL + ticket.EntryTime, Font_12, brush, layout, formatCenter);
@@ -255,6 +298,21 @@ namespace Parking.Entry.Forms
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             Size = new Size(1024, 768);
+
+            //Set Vechile_Type Image on vechile entry 
+            if (_vehicleType == VehicleType.Two_Wheeler)
+            {
+                PictureBox_Vehicle.Image = Properties.Resources.Two_Wheeler_Img;
+            }
+            else if (_vehicleType == VehicleType.Four_Wheeler)
+            {
+
+                PictureBox_Vehicle.Image = Properties.Resources.Four_Wheeler_Img;
+            }
+            else
+            {
+                PictureBox_Vehicle.Hide();
+            }
         }
 
         private void LoadMasterSetting()
@@ -276,7 +334,7 @@ namespace Parking.Entry.Forms
             catch (Exception)
             {
                 throw;
-            }            
+            }
         }
     }
 }

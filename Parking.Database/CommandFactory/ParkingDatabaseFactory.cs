@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Parking.Common;
-using System.Drawing;
-using System.IO;
 using Parking.Common.Model;
 
 namespace Parking.Database.CommandFactory
@@ -97,32 +95,13 @@ namespace Parking.Database.CommandFactory
 
         }
 
-        public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType)
-        {
-            var ticketNumber = GetUniqueCode();
-            var validationNumber = GetUniqueCode();
-            var entryTime = DateTime.Now.ToString();
-            var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, vehicleType, entryTime);
-            var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
-            var driverImage = (Image)IPCamera.GetDriverImage();
-            var vehicleImage = (Image)IPCamera.GetVehicleImage();
-
+        public void SaveVehicleEntry(string deviceId, Ticket ticket)
+        {            
             try
             {
                 var insertQuery = string.Format(queries["InsertVehicleEntry"], deviceId,
-                    ticketNumber, validationNumber, qrCode, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage, 0, 0);
+                    ticket.TicketNumber, ticket.ValidationNumber, ticket.QRCode, ticket.VehicleNumber, (int)ticket.VehicleType, ticket.EntryTime, ticket.DriverImage, ticket.VehicleImage, 0, 0);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
-
-                return new Ticket()
-                {
-                    TicketNumber = ticketNumber,
-                    ValidationNumber = validationNumber,
-                    VehicleNumber = vehicleNumber,
-                    VehicleType = (vehicleType == 2) ? "Two Wheeler" : "Four Wheeler",
-                    QRCodeImage = qrCodeImage,
-                    QRCode = qrCode,
-                    EntryTime = entryTime
-                };
             }
             catch (Exception exception)
             {
