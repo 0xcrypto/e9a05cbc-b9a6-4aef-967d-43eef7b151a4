@@ -9,19 +9,18 @@ namespace Parking.Common
         private static readonly string ConfigFilePath = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), configurationFileName);
 
         private static TDClientSetting tDClientSetting = null;
-        private static readonly object fileLock = new object();
+        private static readonly object FileLock = new object();
       
         public static TDClientSetting GetConfigurationSettings()
         {
             try
             {
-                lock (fileLock)
-                {
-                    if (tDClientSetting != null) return tDClientSetting;
-                                       
+                if (tDClientSetting != null) return tDClientSetting;
+                lock (FileLock)
+                {                      
                     if (!File.Exists(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase.Substring(8)), "DeviceConfig.json")))
                     {
-                        tDClientSetting = new TDClientSetting();
+                        FileLogger.Log($"Configuration settings could not be loaded successfully as DeviceConfig.json was not found in the directory");
                     }
                     using (StreamReader reader = new StreamReader(ConfigFilePath))
                     {

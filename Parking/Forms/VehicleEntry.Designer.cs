@@ -48,8 +48,8 @@
             this.btnHR = new System.Windows.Forms.Button();
             this.btnUP = new System.Windows.Forms.Button();
             this.btnBackSpace = new System.Windows.Forms.Button();
-            this.PictureBox_Vehicle = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Vehicle)).BeginInit();
+            this.pbVehicleTypeIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVehicleTypeIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -307,21 +307,21 @@
             this.btnBackSpace.UseVisualStyleBackColor = false;
             this.btnBackSpace.Click += new System.EventHandler(this.BtnBackSpaceClick);
             // 
-            // PictureBox_Vehicle
+            // pbVehicleTypeIcon
             // 
-            this.PictureBox_Vehicle.Location = new System.Drawing.Point(65, 89);
-            this.PictureBox_Vehicle.Name = "PictureBox_Vehicle";
-            this.PictureBox_Vehicle.Size = new System.Drawing.Size(187, 113);
-            this.PictureBox_Vehicle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.PictureBox_Vehicle.TabIndex = 20;
-            this.PictureBox_Vehicle.TabStop = false;
+            this.pbVehicleTypeIcon.Location = new System.Drawing.Point(65, 89);
+            this.pbVehicleTypeIcon.Name = "pbVehicleTypeIcon";
+            this.pbVehicleTypeIcon.Size = new System.Drawing.Size(187, 113);
+            this.pbVehicleTypeIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVehicleTypeIcon.TabIndex = 20;
+            this.pbVehicleTypeIcon.TabStop = false;
             // 
             // VehicleEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 722);
-            this.Controls.Add(this.PictureBox_Vehicle);
+            this.Controls.Add(this.pbVehicleTypeIcon);
             this.Controls.Add(this.btnUP);
             this.Controls.Add(this.btnHR);
             this.Controls.Add(this.btnCH);
@@ -346,7 +346,7 @@
             this.Name = "VehicleEntry";
             this.Text = "VehicleEntryPage";
             this.Load += new System.EventHandler(this.VehicleEntryLoad);
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Vehicle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVehicleTypeIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +374,6 @@
         private System.Windows.Forms.Button btnCH;
         private System.Windows.Forms.Button btnHR;
         private System.Windows.Forms.Button btnUP;
-        private System.Windows.Forms.PictureBox PictureBox_Vehicle;
+        private System.Windows.Forms.PictureBox pbVehicleTypeIcon;
     }
 }

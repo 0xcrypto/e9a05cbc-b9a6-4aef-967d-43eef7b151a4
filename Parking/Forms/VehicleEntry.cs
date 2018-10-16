@@ -52,17 +52,17 @@ namespace Parking.Entry.Forms
 
                 var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
 
-                generateTicket(vehicleNumber);
+                GenerateTicket(vehicleNumber);
                 PrintTicket();
                 Hide();
-
+              
                 parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, ticket);
 
-                ThreadPool.QueueUserWorkItem(Queuer.Dequeue, null);
+                ThreadPool.QueueUserWorkItem(OfflineRecordProcessor.Dequeue, null);
             }
             catch (Exception exception)
             {
-                ThreadPool.QueueUserWorkItem(Queuer.Queue, ticket);
+                ThreadPool.QueueUserWorkItem(OfflineRecordProcessor.Queue, ticket);
                 FileLogger.Log($"Ticket Processing Failed as : {exception.Message} ");
             }
             finally
@@ -72,7 +72,7 @@ namespace Parking.Entry.Forms
             }
         }
 
-        private void generateTicket(string vehicleNumber)
+        private void GenerateTicket(string vehicleNumber)
         {
             var ticketNumber = parkingDatabaseFactory.GetUniqueCode();
             var validationNumber = parkingDatabaseFactory.GetUniqueCode();
@@ -302,16 +302,16 @@ namespace Parking.Entry.Forms
             //Set Vechile_Type Image on vechile entry 
             if (_vehicleType == VehicleType.Two_Wheeler)
             {
-                PictureBox_Vehicle.Image = Properties.Resources.Two_Wheeler_Img;
+                pbVehicleTypeIcon.Image = Properties.Resources.Two_Wheeler_Img;
             }
             else if (_vehicleType == VehicleType.Four_Wheeler)
             {
 
-                PictureBox_Vehicle.Image = Properties.Resources.Four_Wheeler_Img;
+                pbVehicleTypeIcon.Image = Properties.Resources.Four_Wheeler_Img;
             }
             else
             {
-                PictureBox_Vehicle.Hide();
+                pbVehicleTypeIcon.Hide();
             }
         }
 

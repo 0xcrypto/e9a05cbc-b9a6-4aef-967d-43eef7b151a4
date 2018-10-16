@@ -145,10 +145,19 @@ namespace Parking.Database
 
         private static string ConstructConnectionStringWithServerDetails()
         {
-            var tdSetting = ConfigurationReader.GetConfigurationSettings();
-            var connectionString = $"Data Source = {tdSetting.TdServerIPAddress},{tdSetting.TdServerPort}; Network Library = DBMSSOCN; Initial Catalog = db_Parking; User ID = {tdSetting.TdServerUsername}; Password = {tdSetting.TdServerPassword};";
+            try
+            {
+                var tdSetting = ConfigurationReader.GetConfigurationSettings();
 
-            return connectionString;
+                var connectionString = $"Data Source = {tdSetting.TdServerIPAddress},{tdSetting.TdServerPort}; Network Library = DBMSSOCN; Initial Catalog = db_Parking; User ID = {tdSetting.TdServerUsername}; Password = {tdSetting.TdServerPassword};";
+
+                return connectionString;
+            }
+            catch (System.Exception exception)
+            {
+                FileLogger.Log($"Connection String could not be built as Configuration settings could not be loaded successfully as : {exception.Message}");
+                return string.Empty;
+            }            
         }
     }
 }

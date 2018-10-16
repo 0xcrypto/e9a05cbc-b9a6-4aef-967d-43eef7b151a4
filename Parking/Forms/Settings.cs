@@ -103,16 +103,16 @@ namespace Parking.Entry.Forms
             }
         }
 
-        private void HandleVehicleEntryData(string dataRecieved)
+        private void HandleVehicleEntryData(string vehicleType)
         {
-            ThreadPool.QueueUserWorkItem(VehicleLaunch, dataRecieved);
+            ThreadPool.QueueUserWorkItem(VehicleLaunch, vehicleType);
         }
 
-        private void VehicleLaunch(object state)
+        private void VehicleLaunch(object vehicleType)
         {
             Invoke((Action)(() =>
             {
-                var vehicleEntry = new VehicleEntry(state.ToString());
+                var vehicleEntry = new VehicleEntry(vehicleType.ToString());
                 vehicleEntry.Show();
             }));
         }

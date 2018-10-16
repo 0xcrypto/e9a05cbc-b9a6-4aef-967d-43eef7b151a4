@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queuer.cs" />
+    <Compile Include="OfflineRecordProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Parking.Common\Parking.Common.csproj">

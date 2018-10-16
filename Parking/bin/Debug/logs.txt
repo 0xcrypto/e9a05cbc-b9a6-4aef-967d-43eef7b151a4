@@ -1,2 +1,0 @@
-Ticket Processing Failed as : Cannot insert the value NULL into column 'ParkingCharge', table 'db_Parking.dbo.tbl_parking'; column does not allow nulls. INSERT fails.
-The statement has been terminated.
