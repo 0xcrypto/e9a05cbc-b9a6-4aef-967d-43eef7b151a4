@@ -6,7 +6,9 @@ using Parking.Database.CommandFactory;
 using Parking.Common;
 using Parking.Common.Model;
 using System.IO;
-using System.Reflection;
+using Parking.Common.Enums;
+using System.Threading;
+using Parking.Utilities;
 
 namespace Parking.Entry.Forms
 {
@@ -21,62 +23,115 @@ namespace Parking.Entry.Forms
         private string FourWheelerParkingCharge;
         private string LostTicketPenality;
         private string TicketFooterString;
+        private VehicleType _vehicleType;
+        public VehicleEntry(string vehicleType) : this()
+        {
+            //Assign Vehicle Type on the basis of message sent from PLC Board
+            _vehicleType = vehicleType.Equals("TWO_WHEELER_PARKING_ENTRY") ? VehicleType.Two_Wheeler : VehicleType.Four_Wheeler;
+        }
 
         public VehicleEntry()
         {
             InitializeComponent();
             parkingDatabaseFactory = new ParkingDatabaseFactory();
-            var configrationReader = new ConfigurationReader(Application.ExecutablePath, @"DeviceConfig.json");
-            tdSetting = configrationReader.Load();
 
-            if (tdSetting.DeviceId == null)
-                MessageBox.Show("Problem Loading Device Configuration");
+            tdSetting = ConfigurationReader.GetConfigurationSettings();
+
+            if (tdSetting.TDClientDeviceId == null)
+                FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
 
             LoadMasterSetting();
         }
 
         private void OkButtonClick(object sender, EventArgs e)
         {
-            if (tdSetting.DeviceId == null)
-                return;
+            try
+            {
+                if (tdSetting.TDClientDeviceId == null)
+                    return;
 
-            var vehicleType = 2; // 2 or 4
-            var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
-            ticket = parkingDatabaseFactory.SaveVehicleEntry(tdSetting.DeviceId, vehicleNumber, vehicleType);
+                var vehicleNumber = txtVehicleNumber.Text.ToString().Trim();
 
-            PrintTicket();
-            Hide();
+                GenerateTicket(vehicleNumber);
+                PrintTicket();
+                Hide();
+              
+                parkingDatabaseFactory.SaveVehicleEntry(tdSetting.TDClientDeviceId, ticket);
+
+                ThreadPool.QueueUserWorkItem(OfflineRecordProcessor.Dequeue, null);
+            }
+            catch (Exception exception)
+            {
+                ThreadPool.QueueUserWorkItem(OfflineRecordProcessor.Queue, ticket);
+                FileLogger.Log($"Ticket Processing Failed as : {exception.Message} ");
+            }
+            finally
+            {
+                _vehicleType = VehicleType.Unknown;
+                ticket = null;
+            }
         }
 
-        public void PrintTicket()
+        private void GenerateTicket(string vehicleNumber)
         {
-            string file = Guid.NewGuid().ToString();
-            string directory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"Tickets\");
-            
-            PrintDocument doc = new PrintDocument()
-            {
-                PrinterSettings = new PrinterSettings()
-                {
-                    PrinterName = new PrinterSettings().PrinterName,
-                    PrintToFile = true,
-                    PrintFileName = Path.Combine(directory, file + ".pdf"),
-                }
-            };
-            doc.DefaultPageSettings.PaperSize = new PaperSize("Parking Slip", 227, 393);
-            doc.PrintPage += new PrintPageEventHandler(this.PrintPage);
-            doc.Print();
+            var ticketNumber = parkingDatabaseFactory.GetUniqueCode();
+            var validationNumber = parkingDatabaseFactory.GetUniqueCode();
+            var entryTime = DateTime.Now.ToString();
+            var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, (int)_vehicleType, entryTime);
+            var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
+            var driverImage = (Image)IPCamera.GetDriverImage();
+            var vehicleImage = (Image)IPCamera.GetVehicleImage();
 
-            /*
-                TODO: REMOVE FOR LIVE RUN
-                PrintDialog pdi = new PrintDialog();
-                pdi.Document = doc;
-                if (pdi.ShowDialog() == DialogResult.OK) {
-                    doc.Print();
-                }
-                else {
-                    MessageBox.Show("Print Cancelled");
-                }
-            */
+            ticket = new Ticket()
+            {
+                TicketNumber = ticketNumber,
+                ValidationNumber = validationNumber,
+                VehicleNumber = vehicleNumber,
+                VehicleType = _vehicleType,
+                QRCodeImage = qrCodeImage,
+                QRCode = qrCode,
+                EntryTime = entryTime,
+                DriverImage = (Bitmap)driverImage,
+                VehicleImage= (Bitmap)vehicleImage
+            };
+        }
+
+
+        private void PrintTicket()
+        {
+            try
+            {
+                string file = Guid.NewGuid().ToString();
+                string directory = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"Tickets\");
+
+                PrintDocument doc = new PrintDocument()
+                {
+                    PrinterSettings = new PrinterSettings()
+                    {
+                        PrinterName = new PrinterSettings().PrinterName,
+                        PrintToFile = true,
+                        PrintFileName = Path.Combine(directory, file + ".pdf"),
+                    }
+                };
+                doc.DefaultPageSettings.PaperSize = new PaperSize("Parking Slip", 227, 393);
+                doc.PrintPage += new PrintPageEventHandler(this.PrintPage);
+                doc.Print();
+                /*
+               TODO: REMOVE FOR LIVE RUN
+               PrintDialog pdi = new PrintDialog();
+               pdi.Document = doc;
+               if (pdi.ShowDialog() == DialogResult.OK) {
+                   doc.Print();
+               }
+               else {
+                   MessageBox.Show("Print Cancelled");
+               }
+           */
+            }
+            catch (Exception e)
+            {
+                FileLogger.Log($"Ticket could not be printed Successfully as : {e.Message}");
+            }
         }
 
         public void PrintPage(object sender, PrintPageEventArgs e)
@@ -114,10 +169,10 @@ namespace Parking.Entry.Forms
             g.DrawString(ParkingPlaceName, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(TICKET_NO_LABEL+ticket.TicketNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(TICKET_NO_LABEL + ticket.TicketNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VALIDATION_NO_LABEL+ticket.ValidationNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(VALIDATION_NO_LABEL + ticket.ValidationNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawImage(ticket.QRCodeImage, 50, 100);
@@ -126,13 +181,13 @@ namespace Parking.Entry.Forms
             g.DrawString(ticket.QRCode.Substring(0, 30), Font_8, brush, layout, formatCenter);
             Offset = Offset + lineheight8;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VEHICLE_NO_LABEL+ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
+            g.DrawString(VEHICLE_NO_LABEL + ticket.VehicleNumber, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(ticket.VehicleType, Font_12, brush, layout, formatCenter);
+            g.DrawString(ticket.VehicleType.ToString(), Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
-            g.DrawString(VEHICLE_IN_LABEL+ticket.EntryTime, Font_12, brush, layout, formatCenter);
+            g.DrawString(VEHICLE_IN_LABEL + ticket.EntryTime, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawString(TicketFooterString, Font_10, brush, layout, formatCenter);
@@ -243,21 +298,43 @@ namespace Parking.Entry.Forms
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             Size = new Size(1024, 768);
+
+            //Set Vechile_Type Image on vechile entry 
+            if (_vehicleType == VehicleType.Two_Wheeler)
+            {
+                pbVehicleTypeIcon.Image = Properties.Resources.Two_Wheeler_Img;
+            }
+            else if (_vehicleType == VehicleType.Four_Wheeler)
+            {
+
+                pbVehicleTypeIcon.Image = Properties.Resources.Four_Wheeler_Img;
+            }
+            else
+            {
+                pbVehicleTypeIcon.Hide();
+            }
         }
 
         private void LoadMasterSetting()
         {
-            var dr = parkingDatabaseFactory.GetMasterSettings();
-            CompnayName = dr[0].ToString().Trim();
-            ParkingPlaceName = dr[2].ToString().Trim();
-            TwoWheelerParkingCharge = dr[3].ToString().Trim();
-            FourWheelerParkingCharge = dr[4].ToString().Trim();
-            LostTicketPenality = dr[5].ToString().Trim();
-            TicketFooterString = String.Format("Parking at Owners Risk.\n " +
-                "Four Wheeler Rs. {0} Per Hour.\n " +
-                "Lost Ticket Penality Rs. {1}/-\n" +
-                "and Parking Charges as applicable.\n " +
-                "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+            try
+            {
+                var dr = parkingDatabaseFactory.GetMasterSettings();
+                CompnayName = dr[0].ToString().Trim();
+                ParkingPlaceName = dr[2].ToString().Trim();
+                TwoWheelerParkingCharge = dr[3].ToString().Trim();
+                FourWheelerParkingCharge = dr[4].ToString().Trim();
+                LostTicketPenality = dr[5].ToString().Trim();
+                TicketFooterString = String.Format("Parking at Owners Risk.\n " +
+                    "Four Wheeler Rs. {0} Per Hour.\n " +
+                    "Lost Ticket Penality Rs. {1}/-\n" +
+                    "and Parking Charges as applicable.\n " +
+                    "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

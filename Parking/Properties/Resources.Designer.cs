@@ -73,9 +73,29 @@ namespace Parking.Entry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Four_Wheeler_Img {
+            get {
+                object obj = ResourceManager.GetObject("Four_Wheeler_Img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ParkingBackground {
             get {
                 object obj = ResourceManager.GetObject("ParkingBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Two_Wheeler_Img {
+            get {
+                object obj = ResourceManager.GetObject("Two_Wheeler_Img", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

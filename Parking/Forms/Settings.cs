@@ -22,24 +22,30 @@ namespace Parking.Entry.Forms
         public Settings()
         {
             InitializeComponent();
-            parkingDatabaseFactory = new ParkingDatabaseFactory();
-            var configrationReader = new ConfigurationReader(Application.ExecutablePath, @"DeviceConfig.json");
-            tdSetting = configrationReader.Load();
+            parkingDatabaseFactory = new ParkingDatabaseFactory();            
+            tdSetting = ConfigurationReader.GetConfigurationSettings();
 
-            if (tdSetting.DeviceId == null)
-                MessageBox.Show("Problem Loading Configuration Information");
+            if (tdSetting.TDClientDeviceId == null)
+                FileLogger.Log($"Problem Loading Configuration Information from Configuration File");
         }
 
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            parkingDatabaseFactory.UpdateMasterSettings(txtCompanyName.Text.ToString().Trim(),
+            try
+            {
+                parkingDatabaseFactory.UpdateMasterSettings(txtCompanyName.Text.ToString().Trim(),
                                                       txtParkingPlaceCode.Text.ToString().Trim(),
                                                       txtParkingPlaceName.Text.ToString().Trim(),
                                                       txtTwoWheelerParkingChargesPerHour.Text.ToString().Trim(),
                                                       txtFourWheelerParkingChargesPerHour.Text.ToString().Trim(),
                                                       txtLostTicketPenalty.Text.ToString().Trim());
-            LoadSettings();
-            Hide();
+                LoadSettings();
+                Hide();
+            }
+            catch (Exception exception)
+            {
+                FileLogger.Log($"TDClient Master settings could not be updated successfully as : {exception.Message}");                
+            }            
         }
 
         private void SettingsLoad(object sender, EventArgs e)
@@ -69,34 +75,44 @@ namespace Parking.Entry.Forms
 
         private void BtnConnectPortClick(object sender, EventArgs e)
         {
-            string portName = tdSetting.PLCBoardConnectPort;
-            SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();
-
-            var result = serialPortCommunicate.Connect(portName, BAUD_RATE, PARITY, DATA_BITS, STOP_BITS);
-            if (result)
+            try
             {
-                lblSettingStatus.Text = "Port "+ portName + " connected successfully";
-                lblSettingStatus.ForeColor = Color.Green;
-            }
-            else
-            {
-                lblSettingStatus.Text = "Problem connecting to Port "+ portName;
-                lblSettingStatus.ForeColor = Color.Red;
-            }
-            serialPortCommunicate.RegisterVehicleEntryCallBack(HandleVehicleEntryData);
+                string portName = tdSetting.PLCBoardConnectPort;
+                SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();
 
+                var result = serialPortCommunicate.Connect(portName, BAUD_RATE, PARITY, DATA_BITS, STOP_BITS);
+                if (result)
+                {
+                    lblSettingStatus.Text = "Port " + portName + " connected successfully";
+                    lblSettingStatus.ForeColor = Color.Green;
+
+                    FileLogger.Log($"TDClient connected to port successfully");
+                }
+                else
+                {
+                    lblSettingStatus.Text = "Problem connecting to Port " + portName;
+                    lblSettingStatus.ForeColor = Color.Red;
+
+                    FileLogger.Log($"Connection of TDClient with port failed");
+                }
+                serialPortCommunicate.RegisterVehicleEntryCallBack(HandleVehicleEntryData);
+            }
+            catch (Exception exception)
+            {
+                FileLogger.Log($"Connection of TDClient with port failed as : {exception.Message}");
+            }
         }
 
-        private void HandleVehicleEntryData(string obj)
+        private void HandleVehicleEntryData(string vehicleType)
         {
-            ThreadPool.QueueUserWorkItem(VehicleLaunch);
+            ThreadPool.QueueUserWorkItem(VehicleLaunch, vehicleType);
         }
 
-        private void VehicleLaunch(object state)
+        private void VehicleLaunch(object vehicleType)
         {
             Invoke((Action)(() =>
             {
-                var vehicleEntry = new VehicleEntry();
+                var vehicleEntry = new VehicleEntry(vehicleType.ToString());
                 vehicleEntry.Show();
             }));
         }

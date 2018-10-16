@@ -66,6 +66,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationReader.cs" />
+    <Compile Include="Enums\VehicleType.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="TDClientSetting.cs" />
     <Compile Include="Model\Ticket.cs" />
     <Compile Include="IPCamera.cs" />

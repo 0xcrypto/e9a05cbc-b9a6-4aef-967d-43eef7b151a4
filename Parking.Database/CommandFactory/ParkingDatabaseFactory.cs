@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Parking.Common;
-using System.Drawing;
-using System.IO;
 using Parking.Common.Model;
 
 namespace Parking.Database.CommandFactory
@@ -37,7 +35,7 @@ namespace Parking.Database.CommandFactory
                                                     WHERE [Id] = '{6}'");
 
             queries.Add("InsertVehicleEntry", @"INSERT INTO [tbl_parking]
-                                                            ([DeviceId],
+                                                            ([TDClientDeviceId],
                                                              [TicketNumber],
                                                              [ValidationNumber],
                                                              [QRCode],
@@ -45,8 +43,12 @@ namespace Parking.Database.CommandFactory
                                                              [VehicleType],
                                                              [EntryTime],
                                                              [DriverImage],
-                                                             [VehicleImage]) 
-                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}', '{6}', '{7}', '{8}')");
+                                                             [VehicleImage],
+                                                             [IsParkingEntryDetailsUploadedToServer],
+                                                             [IsParkingExitDetailsUploadedToServer])
+                                                            
+                                                              
+                                                VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')");
 
             queries.Add("GetUniqueCode", @"select cast((Abs(Checksum(NewId()))%10) as varchar(1)) +  char(ascii('a') + (Abs(Checksum(NewId()))%25)) + 
                                                 char(ascii('A')+(Abs(Checksum(NewId()))%25)) + left(newid(),5) as UniqueCode");
@@ -59,9 +61,18 @@ namespace Parking.Database.CommandFactory
             string fourWheelerParkingRatePerHour,
             string lostTicketPenality)
         {
-            var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
-                                      twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, MasterId);
-            sqlDataAccess.ExecuteNonQuery(query);
+            try
+            {
+                var query = string.Format(queries["UpdateMasterSettings"], companyName, parkingPlaceCode, parkingPlaceName,
+                                          twoWheelerParkingRatePerHour, fourWheelerParkingRatePerHour, lostTicketPenality, MasterId);
+                sqlDataAccess.ExecuteNonQuery(query);
+
+            }
+            catch (Exception exception)
+            {
+                FileLogger.Log($"TDClient Master settings could not be updated successfully to database as : {exception.Message}");
+                throw;
+            }
         }
 
         public DataRow GetMasterSettings()
@@ -78,42 +89,23 @@ namespace Parking.Database.CommandFactory
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                FileLogger.Log($"TDClient Master settings could not be loaded successfully from database as : {exception.Message}");
                 throw;
             }
 
         }
 
-        public Ticket SaveVehicleEntry(string deviceId, string vehicleNumber, int vehicleType)
-        {
-            var ticketNumber = GetUniqueCode();
-            var validationNumber = GetUniqueCode();
-            var entryTime = DateTime.Now.ToString();
-            var qrCode = QRCode.GenerateQRCode(vehicleNumber, validationNumber, vehicleType, entryTime);
-            var qrCodeImage = QRCode.GetQRCodeImage(qrCode);
-            var driverImage = (Image)IPCamera.GetDriverImage();
-            var vehicleImage = (Image)IPCamera.GetVehicleImage();
-
+        public void SaveVehicleEntry(string deviceId, Ticket ticket)
+        {            
             try
             {
-                var insertQuery = string.Format(queries["InsertVehicleEntry"], deviceId, 
-                    ticketNumber, validationNumber, qrCode, vehicleNumber, vehicleType, entryTime, driverImage, vehicleImage);
+                var insertQuery = string.Format(queries["InsertVehicleEntry"], deviceId,
+                    ticket.TicketNumber, ticket.ValidationNumber, ticket.QRCode, ticket.VehicleNumber, (int)ticket.VehicleType, ticket.EntryTime, ticket.DriverImage, ticket.VehicleImage, 0, 0);
                 sqlDataAccess.ExecuteNonQuery(insertQuery);
-
-                return new Ticket()
-                {
-                    TicketNumber = ticketNumber,
-                    ValidationNumber = validationNumber,
-                    VehicleNumber = vehicleNumber,
-                    VehicleType = (vehicleType == 2) ? "Two Wheeler" : "Four Wheeler",
-                    QRCodeImage = qrCodeImage,
-                    QRCode = qrCode,
-                    EntryTime = entryTime
-                };
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                FileLogger.Log($"Ticket Information Could not be saved in database as : {exception.Message}");
                 throw;
             }
         }
