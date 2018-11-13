@@ -75,7 +75,7 @@ namespace Parking.Entry.Forms
         {
             try
             {
-                string portName = settings.PLCBoardPortNumber;
+                string portName = settings.PLCBoardPortNumber.ToString();
                 SerialPortCommunicate serialPortCommunicate = new SerialPortCommunicate();
 
                 var result = serialPortCommunicate.Connect(portName, BAUD_RATE, PARITY, DATA_BITS, STOP_BITS);

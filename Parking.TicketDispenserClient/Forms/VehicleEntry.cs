@@ -16,7 +16,7 @@ namespace Parking.Entry.Forms
         private TickerDispenserClientSettings settings;
         private readonly ParkingDatabaseFactory parkingDatabaseFactory;
         private static Ticket ticket;
-        private string CompnayName;
+        private string Company;
         private string ParkingPlaceName;
         private string TwoWheelerParkingCharge;
         private string FourWheelerParkingCharge;
@@ -161,7 +161,7 @@ namespace Parking.Entry.Forms
             RectangleF layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             Brush brush = Brushes.Black;
 
-            g.DrawString(CompnayName, Font_12, brush, layout, formatCenter);
+            g.DrawString(Company, Font_12, brush, layout, formatCenter);
             Offset = Offset + lineheight12;
             layout = new RectangleF(new PointF(startX, startY + Offset), layoutSize);
             g.DrawString(ParkingPlaceName, Font_12, brush, layout, formatCenter);
@@ -318,7 +318,7 @@ namespace Parking.Entry.Forms
             try
             {
                 var dr = parkingDatabaseFactory.GetMasterSettings();
-                CompnayName = dr[0].ToString().Trim();
+                Company = dr[0].ToString().Trim();
                 ParkingPlaceName = dr[2].ToString().Trim();
                 TwoWheelerParkingCharge = dr[3].ToString().Trim();
                 FourWheelerParkingCharge = dr[4].ToString().Trim();
@@ -327,7 +327,7 @@ namespace Parking.Entry.Forms
                     "Four Wheeler Rs. {0} Per Hour.\n " +
                     "Lost Ticket Penality Rs. {1}/-\n" +
                     "and Parking Charges as applicable.\n " +
-                    "{2}", FourWheelerParkingCharge, LostTicketPenality, CompnayName);
+                    "{2}", FourWheelerParkingCharge, LostTicketPenality, Company);
             }
             catch (Exception)
             {

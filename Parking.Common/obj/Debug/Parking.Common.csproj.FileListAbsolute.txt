@@ -18,3 +18,4 @@ D:\Projects\ParkingSoftware\TDClient\Parking.Common\bin\Debug\zxing.presentation
 D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.csproj.CopyComplete
 D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.dll
 D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.pdb
+D:\Projects\ParkingSoftware\TDClient\Parking.Common\obj\Debug\Parking.Common.csprojAssemblyReference.cache
