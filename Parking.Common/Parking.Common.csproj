@@ -66,9 +66,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationReader.cs" />
+    <Compile Include="Enums\Application.cs" />
     <Compile Include="Enums\VehicleType.cs" />
+    <Compile Include="IParkingDatabaseFactory.cs" />
+    <Compile Include="ISerialPortCommunicate.cs" />
+    <Compile Include="ISqlDataAccess.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="TDClientSetting.cs" />
+    <Compile Include="Model\ManualPayStationSettings.cs" />
+    <Compile Include="Model\TickerDispenserClientSettings.cs" />
+    <Compile Include="Model\TicketDispenserServerSettings.cs" />
+    <Compile Include="OfflineRecordProcessor.cs" />
+    <Compile Include="ParkingDatabaseFactory.cs" />
+    <Compile Include="SerialPortCommunicate.cs" />
+    <Compile Include="SqlDataAccess.cs" />
     <Compile Include="Model\Ticket.cs" />
     <Compile Include="IPCamera.cs" />
     <Compile Include="Printer.cs" />
